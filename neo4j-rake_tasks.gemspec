@@ -26,21 +26,12 @@ DESCRIPTION
   s.require_path = 'lib'
   s.files = Dir.glob('{bin,lib,config}/**/*') +
             %w[README.md Gemfile neo4j-rake_tasks.gemspec]
-  s.has_rdoc = true
-  s.extra_rdoc_files = %w[README.md]
-  s.rdoc_options = [
-    '--quiet',
-    '--title',
-    '--line-numbers',
-    '--main',
-    'README.rdoc',
-    '--inline-source'
-  ]
 
   s.add_dependency('os')
   s.add_dependency('rake')
   s.add_dependency('ruby-progressbar')
   s.add_dependency('rubyzip', '>= 1.1.7')
+  s.add_dependency('activesupport', '>= 7.0')
 
   # s.add_development_dependency('vcr')
   s.add_development_dependency('guard')

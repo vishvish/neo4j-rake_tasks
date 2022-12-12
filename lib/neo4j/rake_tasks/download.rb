@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ruby-progressbar'
 require 'net/http'
 
@@ -15,11 +17,11 @@ module Neo4j
 
       def fetch(message)
         require 'open-uri'
-        open(@url,
-             content_length_proc: lambda do |total|
-               create_progress_bar(message, total) if total && total > 0
-             end,
-             progress_proc: method(:update_progress_bar)).read
+        URI.open(@url,
+                 content_length_proc: lambda do |total|
+                   create_progress_bar(message, total) if total&.positive?
+                 end,
+                 progress_proc: method(:update_progress_bar)).read
       end
 
       private
